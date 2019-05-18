@@ -24,15 +24,21 @@ class ViewController: UIViewController {
     var arrayLength: Int = 0
     var randNum: Int = 0
     
-    var level_word = ["kujtim", "ndryshe", "siguri"]
+    var level_word = ["kujtim", "ndryshe", "qendër", "martesë", "drejtor", "tregim", "dashuri"]
     var level_list: Dictionary<Int, Array<String>> = [
-        0: ["kujtim","ujk","mik","ik","kujt","ti","ju","ku"],
-        1: ["ndryshe","dy","dyshe","ne","dry","re","sy"],
-        2: ["siguri","gur","si","gris"]]
+        0: ["im","ju","ku","kujt","kujtim","kuti","mi","mik","ti","uji","ujk"],
+        1: ["dy","dhe","end","ne","nder","ndryshe","rend","re","send","sy"],
+        2: ["derë","dre","dreq","erë","end","enë","ne","në","nder","ndër","ndreq","që","qen","qendër"],
+        3: ["armë","art","ar","erë","metër","martesë","masë","mes","rast","temë","ters"],
+        4: ["derr","det","dre","drejtor","dje","jo","roje","terr","tre"],
+        5: ["me","re","treg","tregim","ti","trim"],
+        6: ["ari","dash","dashuri","dua","disa","dush","hua","hir","sa","shi","uri"]
+        ]
     var wordListUnlockable: Array<String> = []
     var fullWord = ""
     
     var level = 0
+    let defaults = UserDefaults.standard
     
     var wordLetters: Array<Character> = []
     var wordLettersString: Array<String> = []
@@ -59,6 +65,8 @@ class ViewController: UIViewController {
         
         helpMe.layer.cornerRadius = 10
         goButton.layer.cornerRadius = 10
+        
+        level = defaults.integer(forKey: "Level")
         
         wordListUnlockable = level_list[level]!
         arrayLength = level_list[level]!.count
@@ -169,6 +177,7 @@ class ViewController: UIViewController {
     func reset(){
         if wordListUnlockable.isEmpty {
             level += 1
+            defaults.set(level, forKey: "Level")
             gameLevel()
         }
         userWord = ""
