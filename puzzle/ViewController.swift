@@ -49,6 +49,10 @@ class ViewController: UIViewController {
     
     var wordsLeftValue: Int = 0
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     //=============================
     //=============================
     //=============================
@@ -57,6 +61,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        
         for i in 0...11{
             self.letters[i].titleLabel!.minimumScaleFactor = 0.5
             self.letters[i].titleLabel!.numberOfLines = 0;
@@ -64,7 +69,7 @@ class ViewController: UIViewController {
         }
         
         helpMe.layer.cornerRadius = 10
-        goButton.layer.cornerRadius = 10
+        goButton.layer.cornerRadius = 14
         
         level = defaults.integer(forKey: "Level")
         
@@ -242,7 +247,7 @@ class ViewController: UIViewController {
                 self.goButton.backgroundColor = UIColor(red: 0.55, green:0.99, blue:0.55, alpha:1)
             })
             UIView.animate(withDuration: 1) {
-                self.goButton.backgroundColor = UIColor(red: 0.17, green: 0.17, blue: 0.17, alpha: 1)
+                self.goButton.backgroundColor = UIColor(red: 0.784313725, green: 0.784313725, blue: 0.784313725, alpha: 1)
             }
         }
     }
